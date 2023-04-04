@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 CONFIGURE_FLAGS=("--prefix=$cur__install" "--enable-cxx" "--with-pic")
 
