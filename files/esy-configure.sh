@@ -22,6 +22,6 @@ case "$(uname -s)" in
 esac
 
 CONFIGURE_ARGS=$(printf '%s ' "${CONFIGURE_FLAGS[@]}")
-export PATH="/usr/x86_64-w64-mingw32/sys-root/mingw/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/sys-root/mingw/bin:$PATH" # because mingw g++ fails the ./configure tests around certain flags
+find ./ -exec touch -t 200905010101 {} + # because, other makeinfo is being looked up, which we'd like to avoid installing
 ./configure $CONFIGURE_ARGS
