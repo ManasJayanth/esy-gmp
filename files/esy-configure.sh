@@ -22,4 +22,5 @@ case "$(uname -s)" in
 esac
 
 CONFIGURE_ARGS=$(printf '%s ' "${CONFIGURE_FLAGS[@]}")
+export PATH="/usr/x86_64-w64-mingw32/sys-root/mingw/bin:$PATH"
 ./configure $CONFIGURE_ARGS
