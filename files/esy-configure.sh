@@ -23,4 +23,5 @@ esac
 
 CONFIGURE_ARGS=$(printf '%s ' "${CONFIGURE_FLAGS[@]}")
 export PATH="/usr/x86_64-w64-mingw32/sys-root/mingw/bin:$PATH"
+export PATH="/usr/x86_64-w64-mingw32/sys-root/mingw/bin:$PATH" # because mingw g++ fails the ./configure tests around certain flags
 ./configure $CONFIGURE_ARGS
