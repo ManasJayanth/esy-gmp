@@ -9,8 +9,28 @@
     "install": "make install",
     "buildsInSource": true,
     "exportedEnv": {
+      "LDFLAGS": {
+        "scope": "global",
+        "val": "-L#{self.lib} -lgmp"
+      },
+      "CPPFLAGS": {
+        "scope": "global",
+        "val": "-I#{self.install / 'include'}"
+      },
+      "LD_LIBRARY_PATH": {
+        "scope": "global",
+        "val": "#{self.lib}:$LD_LIBRARY_PATH"
+      },
+      "LIBRARY_PATH": {
+        "scope": "global",
+        "val": "#{self.lib}:$LIBRARY_PATH"
+      },
+      "CPATH": {
+        "scope": "global",
+        "val": "#{self.install / 'include'}:$CPATH"
+      },
       "PKG_CONFIG_PATH": {
-        "val": "#{self.lib / 'pkgconfig'}",
+        "val": "#{self.lib / 'pkgconfig' : $PKG_CONFIG_PATH}",
         "scope": "global"
       }
     },
