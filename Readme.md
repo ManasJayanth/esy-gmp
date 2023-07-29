@@ -137,3 +137,4 @@ to actually check if the library works. Referring how the
 corresponding package is being tested in Homebrew or Arch Linux.
 
 Checkout [ci-test.sh](./ci-test.sh) for reference, used on the CI.
+
