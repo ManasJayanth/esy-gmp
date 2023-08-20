@@ -5,12 +5,32 @@
   "source": "https://gmplib.org/download/gmp/gmp-6.2.1.tar.xz#sha256:fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2",
   "override": {
     "buildEnv": {},
-    "build": ["sh ./esy-configure.sh", "make"],
+    "build": ["bash ./esy-configure.sh", "make -j8"],
     "install": "make install",
     "buildsInSource": true,
     "exportedEnv": {
+      "LDFLAGS": {
+        "scope": "global",
+        "val": "-L#{self.lib} -lgmp"
+      },
+      "CPPFLAGS": {
+        "scope": "global",
+        "val": "-I#{self.install / 'include'}"
+      },
+      "LD_LIBRARY_PATH": {
+        "scope": "global",
+        "val": "#{self.lib}:$LD_LIBRARY_PATH"
+      },
+      "LIBRARY_PATH": {
+        "scope": "global",
+        "val": "#{self.lib}:$LIBRARY_PATH"
+      },
+      "CPATH": {
+        "scope": "global",
+        "val": "#{self.install / 'include'}:$CPATH"
+      },
       "PKG_CONFIG_PATH": {
-        "val": "#{self.lib / 'pkgconfig'}",
+        "val": "#{self.lib / 'pkgconfig' : $PKG_CONFIG_PATH}",
         "scope": "global"
       }
     },
