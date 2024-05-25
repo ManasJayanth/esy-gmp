@@ -3,10 +3,7 @@
     "build": "pkg-config --libs gmp"
   },
   "dependencies": {
-    "yarn-pkg-config": "*",
-    "esy-gmp": "6.2.1000"
-  },
-  "resolutions": {
-    "yarn-pkg-config": "esy-ocaml/yarn-pkg-config#9293b15f9f0e3dcac6f86ebb1e09a2fa766289ba"
+    "esy-pkg-config": "*",
+    "esy-gmp": "6.3.0"
   }
 }
