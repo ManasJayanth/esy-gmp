@@ -2,7 +2,7 @@
   "name": "esy-gmp",
   "version": "6.2.1000",
   "description": "GMP packaged for esy",
-  "source": "https://gmplib.org/download/gmp/gmp-6.2.1.tar.xz#sha256:fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2",
+  "source": "https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz#0578d48607ec0e272177d175fd1807c30b00fdf2",
   "override": {
     "buildEnv": {},
     "build": ["bash ./esy-configure.sh", "make -j8"],
