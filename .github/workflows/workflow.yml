@@ -19,13 +19,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Use Node.js 14.x
+      - name: Use Node.js
         uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
 
       - name: Install esy, verdaccio and esy-package
-        run: npm install -g @esy-nightly/esy verdaccio esy-package@dev
+        run: npm install -g @esy-nightly/esy verdaccio esy-package@latest # to be reverted to dev
 
       - name: Run end-to-end tests on the package 
         run: DEBUG=bale*,verdaccio* esy-package
