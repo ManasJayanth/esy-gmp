@@ -1,9 +1,12 @@
 {
   "esy": {
-    "build": "pkg-config --libs gmp"
+    "buildsInSource": true,
+    "build": [
+      "#{os == 'windows' ? 'x86_64-w64-mingw32-':''}gcc test.c -I#{esy-gmp.install / 'include'} -L#{esy-gmp.lib} -lgmp -o test",
+      "./test"
+    ]
   },
   "dependencies": {
-    "esy-pkg-config": "*",
     "esy-gmp": "6.3.0"
   }
 }
