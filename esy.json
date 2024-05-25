@@ -1,16 +1,36 @@
 {
   "name": "esy-gmp",
-  "version": "6.2.1000",
+  "version": "6.3.0",
   "description": "GMP packaged for esy",
-  "source": "https://gmplib.org/download/gmp/gmp-6.2.1.tar.xz#sha256:fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2",
+  "source": "https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz#sha256:a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898",
   "override": {
     "buildEnv": {},
-    "build": ["sh ./esy-configure.sh", "make"],
+    "build": ["bash ./esy-configure.sh", "make -j8"],
     "install": "make install",
     "buildsInSource": true,
     "exportedEnv": {
+      "LDFLAGS": {
+        "scope": "global",
+        "val": "-L#{self.lib} -lgmp"
+      },
+      "CPPFLAGS": {
+        "scope": "global",
+        "val": "-I#{self.install / 'include'}"
+      },
+      "LD_LIBRARY_PATH": {
+        "scope": "global",
+        "val": "#{self.lib}:$LD_LIBRARY_PATH"
+      },
+      "LIBRARY_PATH": {
+        "scope": "global",
+        "val": "#{self.lib}:$LIBRARY_PATH"
+      },
+      "CPATH": {
+        "scope": "global",
+        "val": "#{self.install / 'include'}:$CPATH"
+      },
       "PKG_CONFIG_PATH": {
-        "val": "#{self.lib / 'pkgconfig'}",
+        "val": "#{self.lib / 'pkgconfig' : $PKG_CONFIG_PATH}",
         "scope": "global"
       }
     },

@@ -1,12 +1,12 @@
 {
   "esy": {
-    "build": "pkg-config --libs gmp"
+    "buildsInSource": true,
+    "build": [
+      "#{os == 'windows' ? 'x86_64-w64-mingw32-':''}gcc test.c -I#{esy-gmp.install / 'include'} -L#{esy-gmp.lib} -lgmp -o test",
+      "./test"
+    ]
   },
   "dependencies": {
-    "yarn-pkg-config": "*",
-    "esy-gmp": "6.2.1000"
-  },
-  "resolutions": {
-    "yarn-pkg-config": "esy-ocaml/yarn-pkg-config#9293b15f9f0e3dcac6f86ebb1e09a2fa766289ba"
+    "esy-gmp": "6.3.0"
   }
 }
